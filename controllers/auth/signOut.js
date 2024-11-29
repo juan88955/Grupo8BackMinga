@@ -1,6 +1,6 @@
 import User from '../../models/User.js';
 
-export default async (req, res) => {
+export default async (req, res, next) => {
     try {
         const { email } = req.user;
         await User.findOneAndUpdate(
@@ -13,9 +13,6 @@ export default async (req, res) => {
             message: 'Successfully closed session'
         });
     } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: 'Logout error'
-        });
+        next(error)
     }
 };

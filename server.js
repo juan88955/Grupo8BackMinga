@@ -4,6 +4,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 import indexRouter from './routes/index.js'
 import './config/database.js'
+
+//Middlewares
 import not_found_handler from './middlewares/not_found_handler.js'
 import bad_request_handler from './middlewares/bad_request_handler.js'
 import error_handler from './middlewares/error_handler.js'
