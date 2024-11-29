@@ -9,7 +9,7 @@ console.log(url)
 // Conexion a la base de datos
 async function connectDB() {
     try {
-        await mongoose.connect(process.env.URI_MONGO)
+        await mongoose.connect(url)
         console.log("Conectado a la base de datos")
     } catch (error) {
         console.log(error)
