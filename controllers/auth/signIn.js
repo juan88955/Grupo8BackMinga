@@ -37,10 +37,10 @@ export default async (req, res, next) => {
             response: {
                 user: {
                     email: updatedUser.email,
-                    name: updatedUser.name,
-                    lastname: updatedUser.lastname,
-                    country: updatedUser.country,
+                    password: updatedUser.password,
                     photo: updatedUser.photo,
+                    role: updatedUser.role,
+                    online: updatedUser.online,
                 },
                 token: req.token,
             },

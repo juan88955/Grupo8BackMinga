@@ -20,17 +20,17 @@ export default passport.use(
                     return done(null, user)
                 }
 
-                const hashPassword = bcryptjs.hashSync(profile.id, 10)
+                const hashPassword = bcryptjs.hashSync(
+                    profile.id,
+                    10
+                )
+
                 const newUser = await User.create({
-                    name: profile.name.givenName,
-                    lastName: profile.name.familyName,
                     email: profile.emails[0].value,
+                    password: hashPassword,
                     photo: profile.photos[0].value,
-                    address: "Por definir",
-                    userType: "user",
-                    birthDate: new Date(),
-                    online: true,
-                    password: hashPassword
+                    role: null,
+                    online: true
                 })
 
                 return done(null, newUser)
