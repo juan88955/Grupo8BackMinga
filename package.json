@@ -1,10 +1,18 @@
 {
-  "name": "grupo8backminga",
+  "name": "grupo8backminga---copia",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "data": "node ./models/data/loadData.js",
+    "users": "node ./models/data/users.js",
+    "companies": "node ./models/data/companies.js",
+    "authors": "node ./models/data/authors.js",
+    "mangas": "node ./models/data/mangas.js",
+    "comments": "node ./models/data/comments.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +22,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "joi-oid": "^1.1.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.3",
     "morgan": "^1.10.0",
