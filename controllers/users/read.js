@@ -1,18 +1,12 @@
 import User from "../../models/User.js"
 
-let allUser = async (req, res, next) => {
+const allUser = async (req, res) => {
     try {
-        let { name } = req.query
-        let query = {} //Enviamos un objeto vacio, para traer a todos los usuarios
-
-        if (name) {
-            query.name = { $regex: name, $options: 'i' } //Prevalidaciones
-        }
-
-        let user = await User.find(query);
-        return res.status(200).json({
-            response: user
-        });
+        let users = await User.find()
+        res.status(200).json({
+            success: true,
+            users: users
+        })
     } catch (error) {
         next(error);
     }
@@ -30,13 +24,20 @@ let usersById = async (req, res, next) => {
     }
 };
 
-let usersByName = async (req, res, next) => {
+let usersByEmail = async (req, res, next) => {
     try {
-        let nameQuery = req.params.name;
-        let user = await User.find({ name: nameQuery });
-        return res.status(200).json({
-            response: user
-        });
+        let emailQuery = req.params.email;
+        if (emailQuery) {
+            let regex = new RegExp(emailQuery, 'i');
+            let user = await User.find({ email: regex });
+            return res.status(200).json({
+                response: user
+            });
+        } else {
+            return res.status(400).json({
+                message: "El parámetro 'name' es requerido."
+            });
+        }
     } catch (error) {
         next(error);
     }
@@ -68,7 +69,7 @@ let usersOnline = async (req, res, next) => {
 
 
 
-export { allUser, usersById, usersByName, usersByRole, usersOnline }
+export { allUser, usersById, usersByEmail, usersByRole, usersOnline }
 
 
 

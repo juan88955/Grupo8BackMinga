@@ -15,6 +15,28 @@ const allMangas = async (req, res) => {
     }
 }
 
+let mangaByTitle = async (req, res, next) => {
+    try {
+        let nameQuery = req.params.title;
+
+        if (nameQuery) {
+            let regex = new RegExp(nameQuery, 'i');
+            let title = await Manga.find({ title: regex });
+
+            return res.status(200).json({
+                response: title
+            });
+        } else {
+            return res.status(400).json({
+                message: "El parámetro 'name' es requerido."
+            });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+
 const mangaById = async (req, res) => {
     try {
         let manga = await Manga.findById(req.params.id)
@@ -27,4 +49,4 @@ const mangaById = async (req, res) => {
     }
 }
 
-export { allMangas, mangaById }
+export { allMangas, mangaById, mangaByTitle }

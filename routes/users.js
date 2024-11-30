@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { allUser, usersById, usersByName, usersByRole, usersOnline } from "../controllers/users/read.js"
+import { allUser, usersById, usersByEmail, usersByRole, usersOnline } from "../controllers/users/read.js"
 import register from "../controllers/users/register.js"
 import update from "../controllers/users/update.js"
 import deleteUser from "../controllers/users/delete.js"
@@ -15,11 +15,11 @@ const routerUsers = Router()
 
 routerUsers.get('/all', passport.authenticate('jwt', { session: false }), allUser)
 routerUsers.get('/id/:id', passport.authenticate('jwt', { session: false }), usersById)
-routerUsers.get('/name/:name', passport.authenticate('jwt', { session: false }), usersByName)
+routerUsers.get('/email/:email', passport.authenticate('jwt', { session: false }), usersByEmail)
 routerUsers.get('/role/:role', passport.authenticate('jwt', { session: false }), usersByRole)
 routerUsers.get('/online/:online', passport.authenticate('jwt', { session: false }), usersOnline)
 routerUsers.post('/register', validator(schemaUsersCreate), accountExists, createHash, generateToken, register)
-routerUsers.put('/update', validator(schemaUsersUpdate), passport.authenticate('jwt', { session: false }), createHash, update)
+routerUsers.put('/update/:id', validator(schemaUsersUpdate), passport.authenticate('jwt', { session: false }), createHash, update)
 routerUsers.delete('/delete/:id', passport.authenticate('jwt', { session: false }), deleteUser)
 
 export default routerUsers

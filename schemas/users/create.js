@@ -32,7 +32,7 @@ const userSchema = Joi.object({
             'number.positive': 'The value must be positive',
             'number.precision': 'The value can have up to only one number'
         }),
-        online: Joi.boolean()
+    online: Joi.boolean()
         .optional()
         .messages({
             'boolean.base': 'The "online" field must be a boolean value (true or false).'
