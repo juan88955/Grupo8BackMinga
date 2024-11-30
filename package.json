@@ -7,7 +7,6 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
-    "data": "node ./models/data/loadData.js",
     "users": "node ./models/data/users.js",
     "companies": "node ./models/data/companies.js",
     "authors": "node ./models/data/authors.js",
