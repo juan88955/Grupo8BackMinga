@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from "joi-oid";
 
 const userSchema = Joi.object({
     _id: Joi.objectId().messages({
@@ -69,7 +69,7 @@ const userSchema = Joi.object({
         }),
     user_id: Joi.string()
         .optional()
-        .pattern(/^[a-fA-F0-9]{24}$/) // ObjectId validation pattern
+        .pattern(/^[a-fA-F0-9]{24}$/)
         .messages({
             'any.required': 'The "user_id" field is required.',
             'string.pattern.base': 'The "user_id" must be a valid ObjectId.'
