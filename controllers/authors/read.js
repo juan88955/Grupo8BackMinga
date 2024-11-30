@@ -1,6 +1,8 @@
 import Author from '../../models/Author.js'
+import "../../models/User.js"
 
-const allAuthors = async (req, res) => {
+
+let allAuthors = async (req, res) => {
     try {
         let authors = await Author.find()
         res.status(200).json({
@@ -12,19 +14,38 @@ const allAuthors = async (req, res) => {
     }
 }
 
-const authorById = async (req, res) => {
+let authorById = async (req, res, next) => {
     try {
-        let author = await Author.findById(req.params.id)
-        res.status(200).json({
-            success: true,
-            author: author
-        })
+        let idQuery = req.params.id;
+        let author = await Author.findById(idQuery);
+        return res.status(200).json({
+            response: author
+        });
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error);
     }
-}
+};
 
-export { allAuthors, authorById }
+let authorByName = async (req, res, next) => {
+    try {
+        let nameQuery = req.params.name;
+
+        if (nameQuery) {
+            let regex = new RegExp(nameQuery, 'i');
+            let authors = await Author.find({ name: regex });
+
+            return res.status(200).json({
+                response: authors
+            });
+        } else {
+            return res.status(400).json({
+                message: "El parámetro 'name' es requerido."
+            });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+export { allAuthors, authorById, authorByName }

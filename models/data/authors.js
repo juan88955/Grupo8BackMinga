@@ -4,34 +4,34 @@ import Author from '../Author.js'
 
 let authors = [
     {
-        name: "Kohei",
-        last_name: "Horikoshi",
-        city: "Tokyo",
-        country: "Japan",
-        date: "1986-11-20",
-        photo: "https://randomuser.me/api/portraits/men/1.jpg",
-        active: true,
-        user_id: null
+        name: 'alejandro',
+        last_name: 'Rodriguez',
+        city: 'Buenos Aires',
+        country: 'Argentina',
+        date: new Date('1990-01-01'),
+        photo: 'https://conceptodefinicion.de/wp-content/uploads/2016/01/Perfil2.jpg',
+        user_id: '674a2bdd7c243e05400cd254', // Reemplaza con un ID real de usuario
+        active: true
     },
     {
-        name: "Masashi", 
-        last_name: "Kishimoto",
-        city: "Okayama",
-        country: "Japan",
-        date: "1974-11-08", 
-        photo: "https://randomuser.me/api/portraits/men/2.jpg",
-        active: true,
-        user_id: null
+        name: 'lucas',
+        last_name: 'Martinez',
+        city: 'Lima',
+        country: 'Peru',
+        date: new Date('1992-05-15'),
+        photo: 'https://conceptodefinicion.de/wp-content/uploads/2016/01/Perfil2.jpg',
+        user_id: '674a404d2c593fb14a0d09af', // Reemplaza con un ID real de usuario
+        active: true
     },
     {
-        name: "Eiichiro",
-        last_name: "Oda", 
-        city: "Kumamoto",
-        country: "Japan",
-        date: "1975-01-01",
-        photo: "https://randomuser.me/api/portraits/men/3.jpg",
-        active: true,
-        user_id: null
+        name: 'eric',
+        last_name: 'Lopez',
+        city: 'Montevideo',
+        country: 'Uruguay',
+        date: new Date('1988-11-30'),
+        photo: 'https://conceptodefinicion.de/wp-content/uploads/2016/01/Perfil2.jpg',
+        user_id: '6749b247267e2db6ecb354e6', // Reemplaza con un ID real de usuario
+        active: true
     }
 ]
 

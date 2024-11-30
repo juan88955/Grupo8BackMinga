@@ -4,40 +4,40 @@ import Category from '../Category.js'
 
 let categories = [
     {
-        name: "Shonen",
-        color: "#FF5733",
-        hover: "#FF8C69",
-        description: "Action-packed manga targeted primarily at teenage boys, featuring themes of friendship, perseverance and growth.",
-        cover_photo: "https://randomuser.me/api/portraits/men/30.jpg",
-        character_photo: "https://randomuser.me/api/portraits/men/31.jpg",
-        admin_id: null // Will be updated with real admin ID
+        name: 'shonen',
+        color: '#EF8481',
+        hover: '#FFE0DF',
+        description: 'Is the manga that is aimed at adolescent boys. They are series with large amounts of action, in which humorous situations often occur.',
+        character_photo: 'https://i.postimg.cc/0jdw8g1K/shonen.png',
+        cover_photo: 'https://i.postimg.cc/SK3jZSNj/elongated-shonen.png',
+        admin_id: '64db637e10e0dcd86db7a932'  // Reemplaza con un ID real de usuario de tu base de datos
     },
     {
-        name: "Seinen",
-        color: "#336BFF",
-        hover: "#6690FF",
-        description: "Manga aimed at adult men, often dealing with mature themes and complex narratives.",
-        cover_photo: "https://randomuser.me/api/portraits/men/32.jpg",
-        character_photo: "https://randomuser.me/api/portraits/men/33.jpg",
-        admin_id: null
+        name: 'comics',
+        color: '#8883F0',
+        hover: '#E0DEFF',
+        description: 'Comic books are a publication that consists of comics, narrative artwork in the form of separate panels that represent individual scenes.',
+        character_photo: 'https://i.postimg.cc/dQmtCmdn/comics.png',
+        cover_photo: 'https://i.postimg.cc/yYXBqNLf/elongated-comics.png',
+        admin_id: '674a2bdd7c243e05400cd254'
     },
     {
-        name: "Shojo",
-        color: "#FF33A8",
-        hover: "#FF69C5",
-        description: "Manga targeted at teenage girls, often featuring romance and personal growth stories.",
-        cover_photo: "https://randomuser.me/api/portraits/men/34.jpg",
-        character_photo: "https://randomuser.me/api/portraits/men/35.jpg",
-        admin_id: null
+        name: 'shojo',
+        color: '#00BA88',
+        hover: '#D1FBF0',
+        description: 'It is aimed especially at the adolescent female audience, being mostly starring a girl.',
+        character_photo: 'https://i.postimg.cc/YqzGpBbr/shojo.png',
+        cover_photo: 'https://i.postimg.cc/Yq83RDRP/elongated-shojo.png',
+        admin_id: '6749b247267e2db6ecb354e6'
     },
     {
-        name: "Mecha",
-        color: "#33FF57",
-        hover: "#69FF85",
-        description: "Manga focused on robots and mechanical themes, often featuring epic battles and sci-fi elements.",
-        cover_photo: "https://randomuser.me/api/portraits/men/36.jpg",
-        character_photo: "https://randomuser.me/api/portraits/men/37.jpg",
-        admin_id: null
+        name: 'seinen',
+        color: '#FC9C57',
+        hover: '#FFDDC8',
+        description: 'Japanese seinen manga is marketed towards young adult men. The exact target demographic varies by publication/magazine.',
+        character_photo: 'https://i.postimg.cc/6pKKZn0D/seinen.png',
+        cover_photo: 'https://i.postimg.cc/T1LXzw6H/elongated-seinen.png',
+        admin_id: '674a2bdd7c243e05400cd254'
     }
 ]
 

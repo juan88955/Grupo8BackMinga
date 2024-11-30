@@ -12,7 +12,9 @@
     "companies": "node ./models/data/companies.js",
     "authors": "node ./models/data/authors.js",
     "mangas": "node ./models/data/mangas.js",
-    "comments": "node ./models/data/comments.js"
+    "comments": "node ./models/data/comments.js",
+    "dataProfe": "node ./models/data/data.js",
+    "categories": "node ./models/data/categories.js"
   },
   "keywords": [],
   "author": "",
