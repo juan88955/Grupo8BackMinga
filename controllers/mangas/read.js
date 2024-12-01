@@ -1,19 +1,23 @@
 import Manga from '../../models/Manga.js'
 
-const allMangas = async (req, res) => {
+let allMangas = async (req, res, next) => {
     try {
-        let mangas = await Manga.find()
-        res.status(200).json({
-            success: true,
-            mangas: mangas
-        })
+        let {name} = req.query 
+        let query = {} //Enviamos un objeto vacio, Traer todas los Mangas
+
+        if (name){
+            query.name = {$regex: '^'+name, $options: 'i'}//Prevalidaciones
+        }
+        
+        let manga = await City.find(query);
+        return res.status(200).json({
+            response: manga
+        });
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error);
     }
-}
+};
+
 
 let mangaByTitle = async (req, res, next) => {
     try {
