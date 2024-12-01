@@ -21,7 +21,14 @@ let allMangas = async (req, res, next) => {
 let mangaByTitle = async (req, res, next) => {
     try {
         let titleQuery = req.params.title;
-        let manga = await Manga.find({ title: { $regex: `${titleQuery}`, $options: "i" } });
+        let manga;
+        
+        if (titleQuery) {
+            manga = await Manga.find({ title: { $regex: `${titleQuery}`, $options: "i" } });
+        } else {
+            manga = await Manga.find();
+        }
+        
         return res.status(200).json({
             response: manga
         });
@@ -29,7 +36,6 @@ let mangaByTitle = async (req, res, next) => {
         next(error);
     }
 };
-
 // let mangaByTitle = async (req, res, next) => {
 //     try {
 //         let nameQuery = req.params.title;
