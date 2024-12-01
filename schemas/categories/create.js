@@ -13,7 +13,7 @@ const userSchema = Joi.object({
             'string.empty': 'The "name" field cannot be empty.',
             'any.required': 'The "name" field is required.'
         }),
-        color: Joi.string()
+    color: Joi.string()
         .required()
         .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/) // Allows hex colors (#FFF or #FFFFFF) or text formats
         .messages({
@@ -21,7 +21,7 @@ const userSchema = Joi.object({
             'any.required': 'The "color" field is required.',
             'string.empty': 'The "color" field cannot be empty.'
         }),
-        hover: Joi.string()
+    hover: Joi.string()
         .required()
         .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/) // Allows hex colors (#FFF or #FFFFFF) or text formats
         .messages({

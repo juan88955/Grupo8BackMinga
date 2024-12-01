@@ -6,7 +6,8 @@ import companiesRouter from './companies.js'
 import commentsRouter from './comments.js'
 import authRouter from './auth.js'
 import categoriesRouter from './categories.js'
-
+import chaptersRouter from "./chapter.js"
+import reactionsRouter from "./reactions.js"
 
 const router = express.Router()
 
@@ -17,5 +18,7 @@ router.use('/mangas', mangasRouter)
 router.use('/companies', companiesRouter)
 router.use('/comments', commentsRouter)
 router.use('/categories', categoriesRouter)
+router.use('/chapters', chaptersRouter)
+router.use('/reactions', reactionsRouter)
 
 export default router
