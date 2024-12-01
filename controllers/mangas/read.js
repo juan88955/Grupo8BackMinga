@@ -1,40 +1,55 @@
 import Manga from '../../models/Manga.js'
 
-const allMangas = async (req, res) => {
+let allMangas = async (req, res, next) => {
     try {
-        let mangas = await Manga.find()
-        res.status(200).json({
-            success: true,
-            mangas: mangas
-        })
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+        let {name} = req.query 
+        let query = {} //Enviamos un objeto vacio, Traer todas los Mangas
 
-let mangaByTitle = async (req, res, next) => {
-    try {
-        let nameQuery = req.params.title;
-
-        if (nameQuery) {
-            let regex = new RegExp(nameQuery, 'i');
-            let title = await Manga.find({ title: regex });
-
-            return res.status(200).json({
-                response: title
-            });
-        } else {
-            return res.status(400).json({
-                message: "El parámetro 'name' es requerido."
-            });
+        if (name){
+            query.name = {$regex: '^'+name, $options: 'i'}//Prevalidaciones
         }
+        
+        let manga = await Manga.find(query);
+        return res.status(200).json({
+            response: manga
+        });
     } catch (error) {
         next(error);
     }
 };
+
+let mangaByTitle = async (req, res, next) => {
+    try {
+        let titleQuery = req.params.title;
+        let manga = await Manga.find({ title: { $regex: `${titleQuery}`, $options: "i" } });
+        return res.status(200).json({
+            response: manga
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// let mangaByTitle = async (req, res, next) => {
+//     try {
+//         let nameQuery = req.params.title;
+
+//         if (nameQuery) {
+//             let regex = new RegExp(nameQuery, 'i');
+//             let title = await Manga.find({ title: regex });
+
+//             return res.status(200).json({
+//                 response: title
+//             });
+//         } else {
+//             return res.status(400).json({
+//                 message: "El parámetro 'name' es requerido."
+//             });
+//         }
+//     } catch (error) {
+//         next(error);
+//     }
+// };
 
 
 const mangaById = async (req, res) => {

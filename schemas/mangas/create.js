@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const Schema = Joi.object({
     author_id: Joi
         .objectId()
         .messages({
@@ -48,4 +48,4 @@ const userSchema = Joi.object({
     })
 });
 
-export default userSchema;
+export default Schema;
