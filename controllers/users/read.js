@@ -67,9 +67,21 @@ let usersOnline = async (req, res, next) => {
     }
 };
 
+let userValidate = async (req, res, next) => {
+    try {
+        //El usuario autenticado esta en req.user, no en res.user        
+        return res.status(200).json({
+            success: true,
+            response: req.user
+        });
+    } catch (error) {
+        next(error);
+    }
+};
 
 
-export { allUser, usersById, usersByEmail, usersByRole, usersOnline }
+
+export { allUser, usersById, usersByEmail, usersByRole, usersOnline, userValidate }
 
 
 
