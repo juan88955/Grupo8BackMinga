@@ -8,7 +8,7 @@ let companies = [
         website: "https://www.shonenjump.com",
         description: "La revista de manga más famosa de Japón, hogar de títulos legendarios",
         photo: "https://randomuser.me/api/portraits/men/10.jpg",
-        user_id: null, // Se actualizará con ID real
+        user_id: "674ccf254fa297d7f9b8d601",
         active: true
     },
     {
@@ -16,7 +16,7 @@ let companies = [
         website: "https://www.kodansha.com",
         description: "Una de las editoriales más grandes de Japón, publica manga y literatura",
         photo: "https://randomuser.me/api/portraits/men/11.jpg",
-        user_id: null,
+        user_id: "674a47297aa8ec27e9b1383f",
         active: true
     },
     {
@@ -24,7 +24,7 @@ let companies = [
         website: "https://www.square-enix.com",
         description: "Famosa por sus videojuegos y mangas, especialmente en el género fantasy",
         photo: "https://randomuser.me/api/portraits/men/12.jpg",
-        user_id: null,
+        user_id: "674a404d2c593fb14a0d09b1",
         active: true
     }
 ]
