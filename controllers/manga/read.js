@@ -1,24 +1,7 @@
 import Manga from '../../models/Manga.js'
 
-let allMangas = async (req, res, next) => {
-    try {
-        let {name} = req.query 
-        let query = {} //Enviamos un objeto vacio, Traer todas los Mangas
 
-        if (name){
-            query.name = {$regex: '^'+name, $options: 'i'}//Prevalidaciones
-        }
-        
-        let manga = await Manga.find(query);
-        return res.status(200).json({
-            response: manga
-        });
-    } catch (error) {
-        next(error);
-    }
-};
-
-let mangasByTitle = async (req, res, next) => {
+let mangaByTitle = async (req, res, next) => {
     try {
         let titleQuery = req.params.title;
         let manga;
@@ -37,7 +20,7 @@ let mangasByTitle = async (req, res, next) => {
     }
 };
     
-const mangasById = async (req, res) => {
+const mangaById = async (req, res) => {
     try {
         let manga = await Manga.findById(req.params.id)
         res.status(200).json({
@@ -49,4 +32,4 @@ const mangasById = async (req, res) => {
     }
 }
 
-export { allMangas, mangasById, mangasByTitle }
+export { mangaById, mangaByTitle }
