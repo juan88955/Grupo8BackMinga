@@ -1,5 +1,5 @@
 import express from 'express'
-import { allMangas, mangasById, mangasByTitle } from '../controllers/mangas/read.js'
+import { allMangas, mangasById, mangasByTitle, chaptersByManga } from '../controllers/mangas/read.js'
 import create from '../controllers/mangas/create.js'
 import update from '../controllers/mangas/update.js'
 import deleteManga from '../controllers/mangas/delete.js'
@@ -12,6 +12,7 @@ let router = express.Router()
 
 router.get('/allMangas', allMangas)
 router.get('/mangasByTitle/:title?', mangasByTitle)  
+router.get('/:id/chapters', chaptersByManga)  
 router.get('/mangasById/:id', passport.authenticate('jwt', { session: false }), mangasById)
 router.post('/create', validator(schemaMangasCreate), passport.authenticate('jwt', { session: false }), create)
 router.put('/update/:id', validator(schemaMangasUpdate), passport.authenticate('jwt', { session: false }), update)

@@ -1,5 +1,5 @@
 import express from 'express'
-import { mangaById, mangaByTitle } from '../controllers/manga/read.js'
+import { mangaById, mangaByTitle, mangaWithChapters } from '../controllers/manga/read.js'
 import create from '../controllers/mangas/create.js'
 import update from '../controllers/mangas/update.js'
 import deleteManga from '../controllers/mangas/delete.js'
@@ -7,7 +7,6 @@ import validator from "../middlewares/validator.js"
 import schemaMangasCreate from "../schemas/mangas/create.js"
 import schemaMangasUpdate from "../schemas/mangas/update.js"
 import passport from "../middlewares/passport.js"
-import { mangaWithChapters } from '../controllers/mangas/read.js'
 
 let router = express.Router()
 
