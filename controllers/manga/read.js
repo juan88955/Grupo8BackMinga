@@ -1,5 +1,5 @@
 import Manga from '../../models/Manga.js'
-
+import Chapter from '../../models/Chapter.js';
 
 let mangaByTitle = async (req, res, next) => {
     try {
@@ -32,4 +32,19 @@ const mangaById = async (req, res) => {
     }
 }
 
-export { mangaById, mangaByTitle }
+let mangaWithChapters = async (req, res, next) => {
+    try {
+        const mangaId = req.params.id;
+        const manga = await Manga.findById(mangaId);
+        const chapters = await Chapter.find({ manga_id: mangaId });
+
+        res.status(200).json({
+            response: { ...manga.toObject(), chapters }
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+export { mangaById, mangaByTitle, mangaWithChapters }

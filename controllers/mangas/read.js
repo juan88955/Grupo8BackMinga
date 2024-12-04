@@ -50,18 +50,34 @@ const mangasById = async (req, res) => {
     }
 }
 
-let mangaWithChapters = async (req, res, next) => {
+// Controlador para obtener los capítulos de un manga por su ID
+const chaptersByManga = async (req, res, next) => {
     try {
-        const mangaId = req.params.id;
+        const mangaId = req.params.id; // Obtenemos el ID del manga desde los parámetros de la ruta
+
+        // Buscamos el manga por su ID
         const manga = await Manga.findById(mangaId);
+        if (!manga) {
+            return res.status(404).json({
+                success: false,
+                message: 'Manga no encontrado.',
+            });
+        }
+
+        // Buscamos los capítulos relacionados con el manga
         const chapters = await Chapter.find({ manga_id: mangaId });
 
-        res.status(200).json({
-            response: { ...manga.toObject(), chapters }
+        // Respondemos con el manga y sus capítulos
+        return res.status(200).json({
+            success: true,
+            response: {
+                manga,
+                chapters,
+            },
         });
     } catch (error) {
-        next(error);
+        next(error); // Pasamos el error al middleware de manejo de errores
     }
 };
 
-export { allMangas, mangasById, mangasByTitle, mangaWithChapters }
+export { allMangas, mangasById, mangasByTitle, chaptersByManga }
