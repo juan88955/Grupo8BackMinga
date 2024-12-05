@@ -1,6 +1,5 @@
 import Chapter from '../../models/Chapter.js'
 import Comment from '../../models/Comment.js'
-import mongoose from 'mongoose';
 
 
 const allChapters = async (req, res) => {
@@ -18,13 +17,15 @@ const allChapters = async (req, res) => {
     }
 }
 
-const chapterById = async (req, res) => {
+const chapterById = async (req, res, next) => {
     try {
         let chapter = await Chapter.findById(req.params.id)
         res.status(200).json({
             success: true,
             response: chapter
         })
+        console.log(chapter);
+        
     } catch (error) {
         next(error)
     }
