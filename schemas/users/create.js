@@ -18,6 +18,7 @@ const userSchema = Joi.object({
             'any.required': 'The "password" field is required.'
         }),
     photo: Joi.string()
+        .required()
         .allow('')
         .uri()
         .messages({
