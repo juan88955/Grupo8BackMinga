@@ -16,7 +16,7 @@ const userSchema = Joi.object({
     message: Joi.string()
     .required()
     .pattern(/^[A-Za-z\d @$!%*?&.]+$/) // Allows letters, numbers, spaces, special characters, and dots
-    .min(8)
+    .min(3)
     .max(40)
     .messages({
         'string.pattern.base': 'The message can only contain letters, numbers, spaces, special characters, and dots.',
