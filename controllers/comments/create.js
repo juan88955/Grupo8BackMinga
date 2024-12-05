@@ -5,7 +5,7 @@ const create = async (req, res) => {
         let newComment = await Comment.create(req.body)
         res.status(201).json({
             success: true,
-            comment: newComment
+            response: newComment
         })
     } catch (error) {
         next(error)
