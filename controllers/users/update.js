@@ -1,6 +1,6 @@
 import User from '../../models/User.js'
 
-const update = async (req, res) => {
+const update = async (req, res, next) => {
     try {
         let updatedUser = await User.findByIdAndUpdate(
             req.params.id,
@@ -16,4 +16,29 @@ const update = async (req, res) => {
     }
 }
 
-export default update
+const updateRole = async (req, res,next) => {
+    try {
+        const { userId } = req.params;
+        let { role } = req.body;
+         if (![1, 2].includes(role)) {
+            return res.status(400).json({ message: "Role must be 1 (author) or 2 (company)" });
+        }
+ 
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { role },
+            { new: true }
+        );
+ 
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+ 
+        res.json({ success: true, user });
+ 
+    } catch (error) {
+        next(error)
+    }
+ };
+
+export { update, updateRole }
