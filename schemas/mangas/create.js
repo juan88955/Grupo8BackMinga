@@ -1,18 +1,8 @@
 import Joi from "joi-oid";
 
 const Schema = Joi.object({
-    author_id: Joi
-        .objectId()
-        .messages({
-            'any.required': 'The ID is required',
-            'string.pattern.name': 'The ID must be a valid ObjectId'
-        }),
-    company_id: Joi
-        .objectId()
-        .messages({
-            'any.required': 'The ID is required',
-            'string.pattern.name': 'The ID must be a valid ObjectId'
-        }),
+    creator_id: Joi.string().required(),
+    creator_type: Joi.string().valid('Author', 'Company').required(),
     title: Joi
         .string()
         .required()

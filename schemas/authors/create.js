@@ -47,14 +47,14 @@ const userSchema = Joi.object({
             'string.max': 'The country name must have a maximum of 20 characters.',
             'any.required': 'The "country" field is required.'
         }),
-    date: Joi.date()
-        .required()
-        .less('now')
-        .messages({
-            'date.base': 'The "date" field must be a valid date.',
-            'date.less': 'The "date" must be in the past.',
-            'any.required': 'The "date" field is required.'
-        }),
+    // date: Joi.date()
+    //     .required()
+    //     .less('now')
+    //     .messages({
+    //         'date.base': 'The "date" field must be a valid date.',
+    //         'date.less': 'The "date" must be in the past.',
+    //         'any.required': 'The "date" field is required.'
+    //     }),
     photo: Joi.string()
         .uri()
         .required()

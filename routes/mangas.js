@@ -11,7 +11,7 @@ import passport from "../middlewares/passport.js"
 let router = express.Router()
 
 router.get('/allMangas', allMangas)
-router.get('/mangasByTitle/:title?', mangasByTitle)  
+router.get('/mangasByTitle/:title?', passport.authenticate('jwt', { session: false }), mangasByTitle)  
 router.get('/:id/chapters', chaptersByManga)  
 router.get('/mangasById/:id', passport.authenticate('jwt', { session: false }), mangasById)
 router.post('/create', validator(schemaMangasCreate), passport.authenticate('jwt', { session: false }), create)

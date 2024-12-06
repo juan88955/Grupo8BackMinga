@@ -11,5 +11,5 @@ const schema = new mongoose.Schema({
     timestamps: true
 })
 
-let Company = mongoose.model('Company', schema)
+let Company = mongoose.model('Companies', schema)
 export default Company

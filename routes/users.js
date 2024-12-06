@@ -11,7 +11,8 @@ import createHash from "../middlewares/createHash.js"
 import passport from "../middlewares/passport.js"
 import generateToken from "../middlewares/generateToken.js"
 
-const routerUsers = Router()
+const 
+routerUsers = Router()
 
 routerUsers.get('/allUser', passport.authenticate('jwt', { session: false }), allUser)
 routerUsers.get('/id/:id', passport.authenticate('jwt', { session: false }), usersById)

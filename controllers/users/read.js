@@ -15,7 +15,7 @@ const allUser = async (req, res) => {
 let usersById = async (req, res, next) => {
     try {
         let idQuery = req.params.id;
-        let user = await User.findById(idQuery);
+        let user = await User.findById(idQuery).populate
         return res.status(200).json({
             response: user
         });
