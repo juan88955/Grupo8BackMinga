@@ -13,7 +13,8 @@
     "mangas": "node ./models/data/mangas.js",
     "comments": "node ./models/data/comments.js",
     "dataProfe": "node ./models/data/data.js",
-    "categories": "node ./models/data/categories.js"
+    "categories": "node ./models/data/categories.js",
+    "generateTestRecommendations": "node ./models/data/generateTestRecommendations.js"
   },
   "keywords": [],
   "author": "",

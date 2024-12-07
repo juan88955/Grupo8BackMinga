@@ -18,14 +18,14 @@ const update = async (req, res, next) => {
 
 const updateRole = async (req, res,next) => {
     try {
-        const { userId } = req.params;
-        let { role } = req.body;
+        const { _id, role } = req.body;
+       
          if (![1, 2].includes(role)) {
             return res.status(400).json({ message: "Role must be 1 (author) or 2 (company)" });
         }
  
         const user = await User.findByIdAndUpdate(
-            userId,
+            _id,
             { role },
             { new: true }
         );
