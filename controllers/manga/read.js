@@ -20,7 +20,7 @@ let mangaByTitle = async (req, res, next) => {
     }
 };
     
-const mangaById = async (req, res) => {
+const mangaById = async (req, res, next) => {
     try {
         let manga = await Manga.findById(req.params.id)
         res.status(200).json({
