@@ -3,6 +3,17 @@ import Comment from '../../models/Comment.js'
 const allComments = async (req, res) => {
     try {
         let comments = await Comment.find()
+            .populate({
+                path: 'author_id',
+                model: 'authors',  // Cambiado a 'authors' en minúsculas
+                select: 'name photo email'
+            })
+            .populate({
+                path: 'company_id',
+                model: 'Companies',  // Cambiado a 'Companies'
+                select: 'name photo email'
+            })
+
         res.status(200).json({
             success: true,
             comments: comments
@@ -18,6 +29,17 @@ const allComments = async (req, res) => {
 const commentById = async (req, res, next) => {
     try {
         let comment = await Comment.findById(req.params.id)
+            .populate({
+                path: 'author_id',
+                model: 'authors',
+                select: 'name photo email'
+            })
+            .populate({
+                path: 'company_id',
+                model: 'Companies',
+                select: 'name photo email'
+            })
+
         res.status(200).json({
             success: true,
             comment: comment
@@ -29,16 +51,27 @@ const commentById = async (req, res, next) => {
 
 const commentByAuthOrComp = async (req, res, next) => {
     try {
-        const { author_id, company_id } = req.query; // Obtén los filtros de la query string
+        const { author_id, company_id } = req.query;
         const filter = {};
 
-        if (author_id) filter.author_id = author_id; // Filtra por author_id si está presente
-        if (company_id) filter.company_id = company_id; // Filtra por company_id si está presente
+        if (author_id) filter.author_id = author_id;
+        if (company_id) filter.company_id = company_id;
 
-        const comments = await Comment.find(filter);
+        const comments = await Comment.find(filter)
+            .populate({
+                path: 'author_id',
+                model: 'authors',
+                select: 'name photo email'
+            })
+            .populate({
+                path: 'company_id',
+                model: 'Companies',
+                select: 'name photo email'
+            });
+
         res.status(200).json({
             success: true,
-            respose: comments
+            response: comments
         });
     } catch (error) {
         next(error)
