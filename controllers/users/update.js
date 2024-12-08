@@ -34,7 +34,7 @@ const updateRole = async (req, res,next) => {
             return res.status(404).json({ message: "User not found" });
         }
  
-        res.json({ success: true, user });
+        return res.json({ success: true, user });
  
     } catch (error) {
         next(error)

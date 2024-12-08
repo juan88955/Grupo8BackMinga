@@ -21,7 +21,7 @@ routerUsers.get('/role/:role', passport.authenticate('jwt', { session: false }),
 routerUsers.get('/online/:online', passport.authenticate('jwt', { session: false }), usersOnline)
 routerUsers.post('/register', validator(schemaUsersCreate), accountExists, createHash, generateToken, register)
 routerUsers.put('/update/:id', validator(schemaUsersUpdate), passport.authenticate('jwt', { session: false }), createHash, update)
-routerUsers.patch('/role/:userId', updateRole)
+routerUsers.patch('/updateRole', passport.authenticate('jwt', { session: false }), updateRole)
 routerUsers.delete('/delete/:id', passport.authenticate('jwt', { session: false }), deleteUser)
 routerUsers.get('/validateToken', passport.authenticate('jwt', { session: false }), userValidate)
 
