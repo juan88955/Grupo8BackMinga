@@ -3,11 +3,11 @@ import Chapter from '../../models/Chapter.js';
 
 let allMangas = async (req, res, next) => {
     try {
-        let { name } = req.query
+        let { title } = req.query
         let query = {} //Enviamos un objeto vacio, Traer todas los Mangas
 
-        if (name) {
-            query.name = { $regex: '^' + name, $options: 'i' }//Prevalidaciones
+        if (title) {
+            query.title = { $regex: '^' + title, $options: 'i' }//Prevalidaciones
         }
 
         let manga = await Manga.find(query).populate('category_id').exec()
