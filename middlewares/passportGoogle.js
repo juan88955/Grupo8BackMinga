@@ -29,7 +29,7 @@ export default passport.use(
                     email: profile.emails[0].value,
                     password: hashPassword,
                     photo: profile.photos[0].value,
-                    role: null,
+                    role: 0,
                     online: true
                 })
 
