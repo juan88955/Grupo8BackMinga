@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const schema = Joi.object({
     name: Joi.string()
         .required()
         .pattern(/^[a-zA-Z\s]+$/) // Only letters and spaces
@@ -60,4 +60,4 @@ const userSchema = Joi.object({
 
 });
 
-export default userSchema;
+export default schema;

@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const Schema = Joi.object({
+const schema = Joi.object({
     _id: Joi.objectId().messages({
         'any.required': 'The ID is required',
         'string.pattern.name': 'The ID must be a valid ObjectId'
@@ -52,4 +52,4 @@ category_id: Joi.objectId().messages({
 })
 });
 
-export default Schema;
+export default schema;

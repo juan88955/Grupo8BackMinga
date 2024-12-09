@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const Schema = Joi.object({
+const shema = Joi.object({
     creator_id: Joi.string().required(),
     creator_type: Joi.string().valid('Author', 'Company').required(),
     title: Joi
@@ -38,4 +38,4 @@ const Schema = Joi.object({
     })
 });
 
-export default Schema;
+export default shema;
