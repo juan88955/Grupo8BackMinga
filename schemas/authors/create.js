@@ -3,7 +3,7 @@ import Joi from "joi";
 const userSchema = Joi.object({
     name: Joi.string()
         .required()
-        .pattern(/^[a-zA-Z\s]+$/) // Only letters and spaces
+        .pattern(/^[a-zA-Z\s]+$/)
         .min(3)
         .max(16)
         .messages({
@@ -15,7 +15,7 @@ const userSchema = Joi.object({
         }),
     last_name: Joi.string()
         .required()
-        .pattern(/^[a-zA-Z\s]+$/) // Only letters and spaces
+        .pattern(/^[a-zA-Z\s]+$/)
         .min(3)
         .max(16)
         .messages({
@@ -47,14 +47,14 @@ const userSchema = Joi.object({
             'string.max': 'The country name must have a maximum of 20 characters.',
             'any.required': 'The "country" field is required.'
         }),
-     date: Joi.date()
-         .required()
-         .less('now')
-         .messages({
-             'date.base': 'The "date" field must be a valid date.',
-             'date.less': 'The "date" must be in the past.',
-             'any.required': 'The "date" field is required.'
-         }),
+    date: Joi.date()
+        .required()
+        .less('now')
+        .messages({
+            'date.base': 'The "date" field must be a valid date.',
+            'date.less': 'The "date" must be in the past.',
+            'any.required': 'The "date" field is required.'
+        }),
     photo: Joi.string()
         .uri()
         .required()
@@ -65,7 +65,7 @@ const userSchema = Joi.object({
         }),
     user_id: Joi.string()
         .required()
-        .pattern(/^[a-fA-F0-9]{24}$/) // ObjectId validation pattern
+        .pattern(/^[a-fA-F0-9]{24}$/)
         .messages({
             'any.required': 'The "user_id" field is required.',
             'string.pattern.base': 'The "user_id" must be a valid ObjectId.'

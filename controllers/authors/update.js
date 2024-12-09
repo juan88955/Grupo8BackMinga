@@ -1,6 +1,6 @@
 import Author from '../../models/Author.js'
 
-const update = async (req, res) => {
+const update = async (req, res, next) => {
     try {
         let updatedAuthor = await Author.findByIdAndUpdate(
             req.params.id,

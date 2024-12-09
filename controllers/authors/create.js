@@ -1,6 +1,6 @@
 import Author from '../../models/Author.js'
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
     try {
         let newAuthor = await Author.create(req.body)
         res.status(201).json({

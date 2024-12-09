@@ -1,6 +1,6 @@
 import Category from '../../models/Category.js'
 
-const allCategories = async (req, res) => {
+const allCategories = async (req, res, next) => {
     try {
         let categorys = await Category.find()
         res.status(200).json({
@@ -8,10 +8,7 @@ const allCategories = async (req, res) => {
             categorys: categorys
         })
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error)
     }
 }
 
