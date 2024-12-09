@@ -15,8 +15,17 @@ const allUser = async (req, res) => {
 let usersById = async (req, res, next) => {
     try {
         let idQuery = req.params.id;
-        let user = await User.findById(idQuery).populate
+        let user = await User.findById(idQuery);
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found'
+            });
+        }
+
         return res.status(200).json({
+            success: true,
             response: user
         });
     } catch (error) {
@@ -35,7 +44,7 @@ let usersByEmail = async (req, res, next) => {
             });
         } else {
             return res.status(400).json({
-                message: "El parámetro 'name' es requerido."
+                message: "The 'name' parameter is required."
             });
         }
     } catch (error) {

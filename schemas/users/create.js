@@ -23,6 +23,13 @@ const schema = Joi.object({
         .uri()
         .messages({
             'string.uri': 'Photo URL is invalid'
+        }),
+    role: Joi.number()
+        .required()
+        .messages({
+            'any.required': 'The "role" field is required.',
+            'number.base': 'Role must be a number',
+            'number.min': 'Role cannot be negative'
         })
 });
 

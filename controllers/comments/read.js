@@ -10,7 +10,7 @@ const allComments = async (req, res, next) => {
             })
             .populate({
                 path: 'company_id',
-                model: 'Companies',
+                model: 'companies',
                 select: 'name photo email'
             })
 
@@ -33,7 +33,7 @@ const commentById = async (req, res, next) => {
             })
             .populate({
                 path: 'company_id',
-                model: 'Companies',
+                model: 'companies',
                 select: 'name photo email'
             })
 
@@ -62,7 +62,7 @@ const commentByAuthOrComp = async (req, res, next) => {
             })
             .populate({
                 path: 'company_id',
-                model: 'Companies',
+                model: 'companies',
                 select: 'name photo email'
             });
 
