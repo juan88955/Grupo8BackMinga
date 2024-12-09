@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const Schema = Joi.object({
+const schema = Joi.object({
     manga_id: Joi.objectId().messages({
         'any.required': 'The ID is required',
         'string.pattern.name': 'The ID must be a valid ObjectId'
@@ -27,4 +27,4 @@ const Schema = Joi.object({
         })
 });
 
-export default Schema;
+export default schema;

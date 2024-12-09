@@ -1,6 +1,7 @@
 import Joi from "joi-oid";
 
-const commentSchema = Joi.object({
+
+const schema = Joi.object({
     _id: Joi
         .objectId()
         .messages({
@@ -38,4 +39,4 @@ const commentSchema = Joi.object({
         })
 });
 
-export default commentSchema;
+export default schema;
