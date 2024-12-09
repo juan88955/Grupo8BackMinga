@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const schema = Joi.object({
     _id: Joi
         .objectId()
         .messages({
@@ -13,7 +13,7 @@ const userSchema = Joi.object({
             'any.required': 'The ID is required',
             'string.pattern.name': 'The ID must be a valid ObjectId'
         }),
-        title: Joi.string()
+    title: Joi.string()
         .min(3)
         .max(40)
         .messages({
@@ -21,12 +21,12 @@ const userSchema = Joi.object({
             'string.max': 'The title must have a maximum of 40 characters.',
             'string.empty': 'The "title" field cannot be empty.',
             'any.required': 'The "title" field is required.'
-        }),    cover_photo: Joi.string()
-        .allow('')
-        .uri()
-        .messages({
-            'string.uri': 'Photo URL is invalid'
-        }),
+        }), cover_photo: Joi.string()
+            .allow('')
+            .uri()
+            .messages({
+                'string.uri': 'Photo URL is invalid'
+            }),
     pages: Joi.array()
         .items(Joi.string().uri().messages({
             'string.uri': 'Each page must be a valid URL.'
@@ -47,4 +47,4 @@ const userSchema = Joi.object({
 
 });
 
-export default userSchema;
+export default schema;

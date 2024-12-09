@@ -1,13 +1,13 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const schema = Joi.object({
     _id: Joi.objectId().messages({
         'any.required': 'The ID is required',
         'string.pattern.name': 'The ID must be a valid ObjectId'
     }),
     name: Joi.string()
         .required()
-        .pattern(/^[a-zA-Z\s]+$/) // Only letters and spaces
+        .pattern(/^[a-zA-Z\s]+$/)
         .min(3)
         .max(16)
         .messages({
@@ -17,17 +17,17 @@ const userSchema = Joi.object({
             'string.empty': 'The "name" field cannot be empty.',
             'any.required': 'The "name" field is required.'
         }),
-        color: Joi.string()
+    color: Joi.string()
         .required()
-        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/) // Allows hex colors (#FFF or #FFFFFF) or text formats
+        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/)
         .messages({
             'string.pattern.base': 'The color must be a valid hex code (e.g., #FFF or #FFFFFF) or a valid text format.',
             'any.required': 'The "color" field is required.',
             'string.empty': 'The "color" field cannot be empty.'
         }),
-        hover: Joi.string()
+    hover: Joi.string()
         .required()
-        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/) // Allows hex colors (#FFF or #FFFFFF) or text formats
+        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/)
         .messages({
             'string.pattern.base': 'The hover must be a valid hex code (e.g., #FFF or #FFFFFF) or a valid text format.',
             'any.required': 'The "hover" field is required.',
@@ -63,4 +63,4 @@ const userSchema = Joi.object({
         }),
 });
 
-export default userSchema;
+export default schema;

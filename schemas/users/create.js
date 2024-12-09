@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const userSchema = Joi.object({
+const schema = Joi.object({
     email: Joi.string()
         .email()
         .required()
@@ -23,7 +23,14 @@ const userSchema = Joi.object({
         .uri()
         .messages({
             'string.uri': 'Photo URL is invalid'
+        }),
+    role: Joi.number()
+        .required()
+        .messages({
+            'any.required': 'The "role" field is required.',
+            'number.base': 'Role must be a number',
+            'number.min': 'Role cannot be negative'
         })
 });
 
-export default userSchema;
+export default schema;

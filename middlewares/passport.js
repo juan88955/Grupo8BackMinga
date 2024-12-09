@@ -8,19 +8,19 @@ export default passport.use(
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             secretOrKey: process.env.SECRET
         },
-        async (jwt_payload, done) =>{
+        async (jwt_payload, done) => {
 
             try {
-                let user = await User.findOne({email: jwt_payload.email})
+                let user = await User.findOne({ email: jwt_payload.email })
                 if (user) {
-                    return done(null,user)
-                }else{
-                    return done(null,null)
-                }    
+                    return done(null, user)
+                } else {
+                    return done(null, null)
+                }
             } catch (error) {
-                return done(error,null)
+                return done(error, null)
             }
         }
-        
+
     )
 )

@@ -1,6 +1,6 @@
 import Company from '../../models/Company.js'
 
-const allCompanies = async (req, res) => {
+const allCompanies = async (req, res, next) => {
     try {
         let companies = await Company.find()
         res.status(200).json({
@@ -8,14 +8,11 @@ const allCompanies = async (req, res) => {
             companies: companies
         })
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error)
     }
 }
 
-const companyById = async (req, res) => {
+const companyById = async (req, res, next) => {
     try {
         let company = await Company.findById(req.params.id)
         res.status(200).json({

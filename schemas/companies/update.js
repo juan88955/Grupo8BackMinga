@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const schema = Joi.object({
     _id: Joi.objectId().messages({
         'any.required': 'The ID is required',
         'string.pattern.name': 'The ID must be a valid ObjectId'
@@ -45,7 +45,7 @@ const userSchema = Joi.object({
         }),
     user_id: Joi.string()
         .required()
-        .pattern(/^[a-fA-F0-9]{24}$/) // ObjectId validation pattern
+        .pattern(/^[a-fA-F0-9]{24}$/)
         .messages({
             'any.required': 'The "user_id" field is required.',
             'string.pattern.base': 'The "user_id" must be a valid ObjectId.'
@@ -57,4 +57,4 @@ const userSchema = Joi.object({
         })
 });
 
-export default userSchema;
+export default schema;

@@ -4,7 +4,7 @@ import Chapter from '../Chapter.js'
 
 let chapters = [
     {
-        manga_id: null, // For My Hero Academia
+        manga_id: null,
         title: "The Beginning of Everything",
         cover_photo: "https://randomuser.me/api/portraits/men/40.jpg",
         pages: [
@@ -15,7 +15,7 @@ let chapters = [
         order: 1
     },
     {
-        manga_id: null, // For Naruto
+        manga_id: null,
         title: "Enter: Naruto Uzumaki!",
         cover_photo: "https://randomuser.me/api/portraits/men/44.jpg",
         pages: [
@@ -26,7 +26,7 @@ let chapters = [
         order: 1
     },
     {
-        manga_id: null, // For One Piece
+        manga_id: null,
         title: "Romance Dawn",
         cover_photo: "https://randomuser.me/api/portraits/men/48.jpg",
         pages: [
@@ -37,7 +37,7 @@ let chapters = [
         order: 1
     },
     {
-        manga_id: null, // For Attack on Titan
+        manga_id: null,
         title: "To You, 2000 Years From Now",
         cover_photo: "https://randomuser.me/api/portraits/men/52.jpg",
         pages: [

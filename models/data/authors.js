@@ -10,7 +10,7 @@ let authors = [
         country: 'Argentina',
         date: new Date('1990-01-01'),
         photo: 'https://conceptodefinicion.de/wp-content/uploads/2016/01/Perfil2.jpg',
-        user_id: '674a2bdd7c243e05400cd254', // Reemplaza con un ID real de usuario
+        user_id: '674a2bdd7c243e05400cd254',
         active: true
     },
     {
@@ -20,7 +20,7 @@ let authors = [
         country: 'Peru',
         date: new Date('1992-05-15'),
         photo: 'https://conceptodefinicion.de/wp-content/uploads/2016/01/Perfil2.jpg',
-        user_id: '674a404d2c593fb14a0d09af', // Reemplaza con un ID real de usuario
+        user_id: '674a404d2c593fb14a0d09af',
         active: true
     },
     {
@@ -30,7 +30,7 @@ let authors = [
         country: 'Uruguay',
         date: new Date('1988-11-30'),
         photo: 'https://conceptodefinicion.de/wp-content/uploads/2016/01/Perfil2.jpg',
-        user_id: '6749b247267e2db6ecb354e6', // Reemplaza con un ID real de usuario
+        user_id: '6749b247267e2db6ecb354e6',
         active: true
     }
 ]

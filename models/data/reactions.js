@@ -4,7 +4,7 @@ import Reaction from '../Reaction.js'
 
 let reactions = [
     {
-        manga_id: null, // Will be updated with real manga ID
+        manga_id: null,
         author_id: null,
         company_id: null,
         reaccion: "like"

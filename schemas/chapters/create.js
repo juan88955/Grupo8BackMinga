@@ -1,20 +1,20 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const schema = Joi.object({
     manga_id: Joi.objectId().messages({
         'any.required': 'The ID is required',
         'string.pattern.name': 'The ID must be a valid ObjectId'
     }),
     title: Joi.string()
-    .required()
-    .min(3)
-    .max(40)
-    .messages({
-        'string.min': 'The title must have at least 3 characters.',
-        'string.max': 'The title must have a maximum of 40 characters.',
-        'string.empty': 'The "title" field cannot be empty.',
-        'any.required': 'The "title" field is required.'
-    }),
+        .required()
+        .min(3)
+        .max(40)
+        .messages({
+            'string.min': 'The title must have at least 3 characters.',
+            'string.max': 'The title must have a maximum of 40 characters.',
+            'string.empty': 'The "title" field cannot be empty.',
+            'any.required': 'The "title" field is required.'
+        }),
     cover_photo: Joi.string()
         .allow('')
         .uri()
@@ -43,4 +43,4 @@ const userSchema = Joi.object({
 
 });
 
-export default userSchema;
+export default schema;

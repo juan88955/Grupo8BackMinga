@@ -16,29 +16,29 @@ const update = async (req, res, next) => {
     }
 }
 
-const updateRole = async (req, res,next) => {
+const updateRole = async (req, res, next) => {
     try {
         const { _id, role } = req.body;
-       
-         if (![1, 2].includes(role)) {
+
+        if (![1, 2].includes(role)) {
             return res.status(400).json({ message: "Role must be 1 (author) or 2 (company)" });
         }
- 
+
         const user = await User.findByIdAndUpdate(
             _id,
             { role },
             { new: true }
         );
- 
+
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
- 
+
         return res.json({ success: true, user });
- 
+
     } catch (error) {
         next(error)
     }
- };
+};
 
 export { update, updateRole }

@@ -2,7 +2,7 @@ import Author from '../../models/Author.js'
 import "../../models/User.js"
 
 
-let allAuthors = async (req, res) => {
+let allAuthors = async (req, res, next) => {
     try {
         let authors = await Author.find()
         res.status(200).json({
@@ -15,7 +15,7 @@ let allAuthors = async (req, res) => {
 }
 
 
-let findAuthor = async (req, res) => {
+let findAuthor = async (req, res, next) => {
 
     try {
         const { user_id } = req.body;
@@ -27,20 +27,15 @@ let findAuthor = async (req, res) => {
             });
         }
 
-        // Busca el autor en la base de datos
         const author = await Author.findOne({ user_id });
 
 
         res.status(200).json({
             success: true,
-            response: author || null 
+            response: author || null
         });
     } catch (error) {
-        console.error("error:", error);
-        res.status(500).json({
-            success: false,
-            message: "internal server error"
-        });
+        next(error)
     }
 }
 
