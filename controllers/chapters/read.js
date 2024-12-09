@@ -38,8 +38,8 @@ let getCommentsByChapterId = async (req, res, next) => {
 
         const comments = await Comment.find({ chapter_id: chapterId })
 
-        .populate("author_id", "name photo") // Popula solo campos específicos del author
-        .populate("company_id", "name photo"); // Popula solo campos específicos de la company
+        .populate("author_id", "name photo") 
+        .populate("company_id", "name photo"); 
 
         res.status(200).json({
             response: comments 
