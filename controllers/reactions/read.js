@@ -14,9 +14,16 @@ const allReactions = async (req, res, next) => {
             })
         }
 
-        next()
+        return res.status(200).json({
+            success: true,
+            reactions: reactions
+        })
+
     } catch (error) {
-        next(error)
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        })
     }
 }
 
