@@ -27,4 +27,32 @@ const companyById = async (req, res) => {
     }
 }
 
-export { allCompanies, companyById }
+let findCompany = async (req, res) => {
+
+    try {
+        const { user_id } = req.body;
+
+        if (!user_id) {
+            return res.status(400).json({
+                success: false,
+                message: "id of user is required"
+            });
+        }
+
+        // Busca el autor en la base de datos
+        const company = await Company.findOne({ user_id });
+
+
+        res.status(200).json({
+            success: true,
+            response: company || null 
+        });
+    } catch (error) {
+        console.error("error:", error);
+        res.status(500).json({
+            success: false,
+            message: "internal server error"
+        });
+    }
+}
+export { allCompanies, companyById, findCompany }
