@@ -14,6 +14,36 @@ let allAuthors = async (req, res) => {
     }
 }
 
+
+let findAuthor = async (req, res) => {
+
+    try {
+        const { user_id } = req.body;
+
+        if (!user_id) {
+            return res.status(400).json({
+                success: false,
+                message: "id of user is required"
+            });
+        }
+
+        // Busca el autor en la base de datos
+        const author = await Author.findOne({ user_id });
+
+
+        res.status(200).json({
+            success: true,
+            response: author || null 
+        });
+    } catch (error) {
+        console.error("error:", error);
+        res.status(500).json({
+            success: false,
+            message: "internal server error"
+        });
+    }
+}
+
 let authorById = async (req, res, next) => {
     try {
         let idQuery = req.params.id;
@@ -48,4 +78,4 @@ let authorByName = async (req, res, next) => {
 };
 
 
-export { allAuthors, authorById, authorByName }
+export { allAuthors, authorById, authorByName, findAuthor }

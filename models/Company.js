@@ -5,11 +5,11 @@ const schema = new mongoose.Schema({
     website: { type: String },
     description: { type: String, required: true },
     photo: { type: String, required: true },
-    user_id: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
+    user_id: { type: mongoose.Types.ObjectId, ref: 'users', required: true },
     active: { type: Boolean, required: true }
 }, {
     timestamps: true
 })
 
-let Company = mongoose.model('Companies', schema)
+let Company = mongoose.model('companies', schema)
 export default Company

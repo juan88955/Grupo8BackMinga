@@ -1,5 +1,5 @@
 import express from 'express'
-import { allAuthors, authorById, authorByName } from '../controllers/authors/read.js'
+import { allAuthors, authorById, authorByName, findAuthor } from '../controllers/authors/read.js'
 import create from '../controllers/authors/create.js'
 import update from '../controllers/authors/update.js'
 import deleteAuthor from '../controllers/authors/delete.js'
@@ -13,6 +13,7 @@ let router = express.Router()
 
 router.get('/allAuthors', allAuthors)
 router.get('/id/:id', passport.authenticate('jwt', { session: false }), authorById)
+router.post("/findAuthor", passport.authenticate('jwt', { session: false }), findAuthor)
 router.get('/name/:name', passport.authenticate('jwt', { session: false }), authorByName)
 router.post('/createAuthor', validator(schemaAuthorsCreate), passport.authenticate('jwt', { session: false }), create)
 router.put('/update/:id', validator(schemaAuthorsUpdate), passport.authenticate('jwt', { session: false }), update)

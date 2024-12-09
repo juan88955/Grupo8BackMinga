@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
 
 const schema = new mongoose.Schema({
-    chapter_id: { type: mongoose.Types.ObjectId, ref: 'Chapter', required: true },
-    author_id: { type: mongoose.Types.ObjectId, ref: 'Author' },
-    company_id: { type: mongoose.Types.ObjectId, ref: 'Company' },
+    chapter_id: { type: mongoose.Types.ObjectId, ref: 'chapter', required: true },
+    author_id: { type: mongoose.Types.ObjectId, ref: 'authors' },
+    company_id: { type: mongoose.Types.ObjectId, ref: 'companies' },
     message: { type: String, required: true }
 }, {
     timestamps: true
