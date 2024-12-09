@@ -1,13 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const schema = new mongoose.Schema({
-    manga_id: { type: mongoose.Types.ObjectId, ref: 'Manga', required: true },
-    author_id: { type: mongoose.Types.ObjectId, ref: 'Author' },
-    company_id: { type: mongoose.Types.ObjectId, ref: 'Company' },
+    manga_id: { type: mongoose.Types.ObjectId, ref: 'mangas', required: true },
+    user_id: { type: mongoose.Types.ObjectId, ref: 'users', required: true },
     reaccion: { type: String, required: true }
 }, {
     timestamps: true
-})
+});
 
-let reaction = mongoose.model('reaction', schema)
-export default reaction
+const Reaction = mongoose.model('reactions', schema);
+export default Reaction;

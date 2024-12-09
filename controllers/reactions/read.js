@@ -1,27 +1,40 @@
 import Reaction from '../../models/Reaction.js'
 
-const allReactions = async (req, res) => {
+const allReactions = async (req, res, next) => {
     try {
         let reactions = await Reaction.find()
-        res.status(200).json({
-            success: true,
-            reactions: reactions
-        })
+            .populate('manga_id', ['title', 'cover_photo'])
+            .populate('author_id', ['name', 'photo'])
+            .populate('company_id', ['name', 'photo'])
+
+        if (!reactions.length) {
+            return res.status(404).json({
+                success: false,
+                message: 'No reactions found'
+            })
+        }
+
+        next()
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error)
     }
 }
 
-const reactionById = async (req, res) => {
+const reactionById = async (req, res, next) => {
     try {
         let reaction = await Reaction.findById(req.params.id)
-        res.status(200).json({
-            success: true,
-            reaction: reaction
-        })
+            .populate('manga_id', ['title', 'cover_photo'])
+            .populate('author_id', ['name', 'photo'])
+            .populate('company_id', ['name', 'photo'])
+
+        if (!reaction) {
+            return res.status(404).json({
+                success: false,
+                message: 'Reaction not found'
+            })
+        }
+
+        next()
     } catch (error) {
         next(error)
     }
