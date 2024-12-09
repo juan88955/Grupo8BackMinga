@@ -3,7 +3,7 @@ import Joi from "joi-oid";
 const schema = Joi.object({
     name: Joi.string()
         .required()
-        .pattern(/^[a-zA-Z\s]+$/) // Only letters and spaces
+        .pattern(/^[a-zA-Z\s]+$/)
         .min(3)
         .max(16)
         .messages({
@@ -15,7 +15,7 @@ const schema = Joi.object({
         }),
     color: Joi.string()
         .required()
-        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/) // Allows hex colors (#FFF or #FFFFFF) or text formats
+        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/)
         .messages({
             'string.pattern.base': 'The color must be a valid hex code (e.g., #FFF or #FFFFFF) or a valid text format.',
             'any.required': 'The "color" field is required.',
@@ -23,7 +23,7 @@ const schema = Joi.object({
         }),
     hover: Joi.string()
         .required()
-        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/) // Allows hex colors (#FFF or #FFFFFF) or text formats
+        .pattern(/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$|^[a-zA-Z\s]+$/)
         .messages({
             'string.pattern.base': 'The hover must be a valid hex code (e.g., #FFF or #FFFFFF) or a valid text format.',
             'any.required': 'The "hover" field is required.',

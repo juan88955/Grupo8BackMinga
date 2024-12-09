@@ -45,7 +45,7 @@ const schema = Joi.object({
         }),
     user_id: Joi.string()
         .required()
-        .pattern(/^[a-fA-F0-9]{24}$/) // ObjectId validation pattern
+        .pattern(/^[a-fA-F0-9]{24}$/)
         .messages({
             'any.required': 'The "user_id" field is required.',
             'string.pattern.base': 'The "user_id" must be a valid ObjectId.'

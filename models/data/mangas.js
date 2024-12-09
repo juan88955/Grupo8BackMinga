@@ -4,12 +4,12 @@ import Manga from '../Manga.js'
 
 let mangas = [
     {
-        author_id: null, // Will be updated with real ID
-        company_id: null, // Will be updated with real ID
+        author_id: null,
+        company_id: null,
         title: "My Hero Academia",
         cover_photo: "https://randomuser.me/api/portraits/men/20.jpg",
         description: "In a world where 80% of the population has developed superpowers, Izuku Midoriya dreams of becoming a hero despite being powerless.",
-        category_id: null // Will be updated with real ID
+        category_id: null
     },
     {
         author_id: null,

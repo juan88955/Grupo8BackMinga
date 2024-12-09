@@ -1,16 +1,16 @@
 import Comment from '../../models/Comment.js'
 
-const allComments = async (req, res) => {
+const allComments = async (req, res, next) => {
     try {
         let comments = await Comment.find()
             .populate({
                 path: 'author_id',
-                model: 'authors',  // Cambiado a 'authors' en minúsculas
+                model: 'authors',
                 select: 'name photo email'
             })
             .populate({
                 path: 'company_id',
-                model: 'Companies',  // Cambiado a 'Companies'
+                model: 'Companies',
                 select: 'name photo email'
             })
 
@@ -19,10 +19,7 @@ const allComments = async (req, res) => {
             comments: comments
         })
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error)
     }
 }
 

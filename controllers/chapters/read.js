@@ -2,7 +2,7 @@ import Chapter from '../../models/Chapter.js'
 import Comment from '../../models/Comment.js'
 
 
-const allChapters = async (req, res) => {
+const allChapters = async (req, res, next) => {
     try {
         let chapters = await Chapter.find()
         res.status(200).json({
@@ -10,10 +10,7 @@ const allChapters = async (req, res) => {
             response: chapters
         })
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
+        next(error)
     }
 }
 
@@ -25,24 +22,23 @@ const chapterById = async (req, res, next) => {
             response: chapter
         })
         console.log(chapter);
-        
+
     } catch (error) {
         next(error)
     }
 }
 
-// Obtener comentarios de un capítulo
 let getCommentsByChapterId = async (req, res, next) => {
     try {
         const chapterId = req.params.chapterId;
 
         const comments = await Comment.find({ chapter_id: chapterId })
 
-        .populate("author_id", "name photo") 
-        .populate("company_id", "name photo"); 
+            .populate("author_id", "name photo")
+            .populate("company_id", "name photo");
 
         res.status(200).json({
-            response: comments 
+            response: comments
         });
     } catch (error) {
         next(error);

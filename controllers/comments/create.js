@@ -2,7 +2,6 @@ import Comment from '../../models/Comment.js'
 
 const create = async (req, res, next) => {
     try {
-        // Obtener el ID del capítulo de los parámetros de la URL
         const chapter_id = req.params.chapter_id;
         const { message, author_id, company_id } = req.body;
 
@@ -23,12 +22,12 @@ const create = async (req, res, next) => {
         const commentData = {
             chapter_id,
             message,
-            author_id,     // opcional
-            company_id     // opcional
+            author_id,
+            company_id
         };
 
         let newComment = await Comment.create(commentData);
-        
+
         res.status(201).json({
             success: true,
             response: newComment

@@ -1,5 +1,6 @@
 import Joi from "joi-oid";
 
+
 const schema = Joi.object({
     _id: Joi
         .objectId()
@@ -26,7 +27,7 @@ const schema = Joi.object({
             'string.pattern.name': 'The ID must be a valid ObjectId'
         }),
     message: Joi.string()
-        .pattern(/^[A-Za-z\d @$!%*?&.]+$/) // Allows letters, numbers, spaces, special characters, and dots
+        .pattern(/^[A-Za-z\d @$!%*?&.]+$/)
         .min(3)
         .max(40)
         .messages({

@@ -2,17 +2,17 @@ import Joi from "joi-oid";
 
 const schema = Joi.object({
     name: Joi.string()
-    .required()
-    .pattern(/^[A-Za-z\d @$!%*?&.]+$/)
-    .min(3)
-    .max(25)
-    .messages({
-        'string.pattern.base': 'The name can only contain letters, numbers, spaces, special characters, and dots.',
-        'string.min': 'The name must have at least 3 characters.',
-        'string.max': 'The name must have a maximum of 25 characters.',
-        'string.empty': 'The "name" field cannot be empty.',
-        'any.required': 'The "name" field is required.'
-    }),
+        .required()
+        .pattern(/^[A-Za-z\d @$!%*?&.]+$/)
+        .min(3)
+        .max(25)
+        .messages({
+            'string.pattern.base': 'The name can only contain letters, numbers, spaces, special characters, and dots.',
+            'string.min': 'The name must have at least 3 characters.',
+            'string.max': 'The name must have a maximum of 25 characters.',
+            'string.empty': 'The "name" field cannot be empty.',
+            'any.required': 'The "name" field is required.'
+        }),
     website: Joi.string()
         .uri()
         .required()
@@ -41,7 +41,7 @@ const schema = Joi.object({
         }),
     user_id: Joi.string()
         .required()
-        .pattern(/^[a-fA-F0-9]{24}$/) // ObjectId validation pattern
+        .pattern(/^[a-fA-F0-9]{24}$/)
         .messages({
             'any.required': 'The "user_id" field is required.',
             'string.pattern.base': 'The "user_id" must be a valid ObjectId.'
