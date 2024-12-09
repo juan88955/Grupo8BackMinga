@@ -4,9 +4,9 @@ const schema = new mongoose.Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     photo: { type: String, required: true },
-    role: { type: Number, enum: [0, 1, 2], default: 0 }, // 0= user, 1= author, 2= admin
+    role: { type: Number, enum: [0, 1, 2, 3], required: true },
     online: { type: Boolean, default: true },
-    profile: {type: mongoose.Types.ObjectId, refPath: 'role'} // referencia condicional al modelo basado en el role
+    profile: {type: mongoose.Types.ObjectId, refPath: 'role'}
 }, {
     timestamps: true
 })

@@ -1,6 +1,6 @@
 import Joi from "joi-oid";
 
-const userSchema = Joi.object({
+const commentSchema = Joi.object({
     _id: Joi
         .objectId()
         .messages({
@@ -26,7 +26,7 @@ const userSchema = Joi.object({
             'string.pattern.name': 'The ID must be a valid ObjectId'
         }),
     message: Joi.string()
-        .pattern(/^[A-Za-z\d @$!%*?&.]+$/) // Allows letters, numbers, spaces, special characters, and dots
+        .pattern(/^[A-Za-z\d @$!%*?&.]+$/)
         .min(3)
         .max(40)
         .messages({
@@ -38,4 +38,4 @@ const userSchema = Joi.object({
         })
 });
 
-export default userSchema;
+export default commentSchema;

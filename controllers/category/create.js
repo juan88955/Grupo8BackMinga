@@ -1,6 +1,6 @@
 import Category from '../../models/Category.js'
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
     try {
         let newCategory = await Category.create(req.body)
         res.status(201).json({

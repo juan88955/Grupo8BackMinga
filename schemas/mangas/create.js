@@ -6,7 +6,7 @@ const Schema = Joi.object({
     title: Joi
         .string()
         .required()
-        .pattern(/^[A-Za-z\d @$!%*?&.]+$/) // Allows letters, numbers, spaces, special characters, and dots
+        .pattern(/^[A-Za-z\d @$!%*?&.]+$/)
         .min(3)
         .max(40)
         .messages({

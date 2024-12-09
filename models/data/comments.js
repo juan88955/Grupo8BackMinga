@@ -4,8 +4,8 @@ import Comment from '../Comment.js'
 
 let comments = [
     {
-        chapter_id: null, // Will be updated with real chapter ID
-        author_id: null, // Will be updated with real author ID
+        chapter_id: null,
+        author_id: null,
         company_id: null,
         message: "Great chapter! The character development was amazing."
     },
