@@ -25,7 +25,6 @@ const schema = Joi.object({
             'string.uri': 'Photo URL is invalid'
         }),
     role: Joi.number()
-        .required()
         .messages({
             'any.required': 'The "role" field is required.',
             'number.base': 'Role must be a number',
