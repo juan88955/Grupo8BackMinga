@@ -1,18 +1,24 @@
 import Joi from "joi-oid";
 
 const schema = Joi.object({
-    chapter_id: Joi.objectId().messages({
-        'any.required': 'The ID is required',
-        'string.pattern.name': 'The ID must be a valid ObjectId'
-    }),
-    author_id: Joi.objectId().messages({
-        'any.required': 'The ID is required',
-        'string.pattern.name': 'The ID must be a valid ObjectId'
-    }),
-    company_id: Joi.objectId().messages({
-        'any.required': 'The ID is required',
-        'string.pattern.name': 'The ID must be a valid ObjectId'
-    }),
+    chapter_id: Joi.objectId()
+        .required()
+        .messages({
+            'any.required': 'Chapter ID is required',
+            'string.pattern.name': 'The ID must be a valid ObjectId'
+        }),
+    author_id: Joi.objectId()
+        .required()
+        .messages({
+            'any.required': 'Author ID is required',
+            'string.pattern.name': 'The ID must be a valid ObjectId'
+        }),
+    company_id: Joi.objectId()
+        .required()
+        .messages({
+            'any.required': 'Company ID is required',
+            'string.pattern.name': 'The ID must be a valid ObjectId'
+        }),
     message: Joi.string()
         .required()
         .pattern(/^[A-Za-z\d @$!%*?&.]+$/)

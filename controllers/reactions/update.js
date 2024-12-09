@@ -19,9 +19,12 @@ const update = async (req, res, next) => {
             .populate('author_id', ['name', 'photo'])
             .populate('company_id', ['name', 'photo']);
 
-        next
+        return res.status(200).json({
+            success: true,
+            reaction: updatedReaction
+        });
     } catch (error) {
-        next(error)
+        next(error);
     }
 }
 

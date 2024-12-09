@@ -2,20 +2,19 @@ import Comment from '../../models/Comment.js'
 
 const create = async (req, res, next) => {
     try {
-        const chapter_id = req.params.chapter_id;
-        const { message, author_id, company_id } = req.body;
+        const { chapter_id, message, author_id, company_id } = req.body;
 
         if (!chapter_id) {
             return res.status(400).json({
                 success: false,
-                message: 'Se requiere ID del capítulo'
+                message: 'Chapter ID is required'
             });
         }
 
         if (!message) {
             return res.status(400).json({
                 success: false,
-                message: 'Se requiere mensaje del comentario'
+                message: 'Comment message is required'
             });
         }
 
