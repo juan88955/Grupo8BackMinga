@@ -1,15 +1,49 @@
-import Reaction from '../../models/Reaction.js'
+import Reaction from '../../models/Reaction.js';
 
 const create = async (req, res) => {
     try {
-        let newReaction = await Reaction.create(req.body)
-        res.status(201).json({
+        const { manga_id, reaccion } = req.body;
+        const userId = req.user.id;
+
+        const existingReaction = await Reaction.findOne({
+            manga_id,
+            user_id: userId
+        });
+
+        if (existingReaction && existingReaction.reaccion === reaccion) {
+            await Reaction.findByIdAndDelete(existingReaction._id);
+            return res.status(200).json({
+                success: true,
+                message: "Reaction removed",
+                reaction: null
+            });
+        }
+
+        if (existingReaction) {
+            existingReaction.reaccion = reaccion;
+            await existingReaction.save();
+            return res.status(200).json({
+                success: true,
+                reaction: existingReaction
+            });
+        }
+
+        const newReaction = await Reaction.create({
+            manga_id,
+            reaccion,
+            user_id: userId
+        });
+
+        return res.status(201).json({
             success: true,
             reaction: newReaction
-        })
+        });
     } catch (error) {
-        next(error)
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
-}
+};
 
-export default create
+export default create;
