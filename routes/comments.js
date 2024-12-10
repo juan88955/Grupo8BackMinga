@@ -5,7 +5,6 @@ import {update, updateComment} from '../controllers/comments/update.js'
 import deleteComment from '../controllers/comments/delete.js'
 import validator from "../middlewares/validator.js"
 import schemaCommentsCreate from "../schemas/comments/create.js"
-//import schemaCommentsUpdate from "../schemas/comments/update.js"
 import passport from "../middlewares/passport.js"
 
 

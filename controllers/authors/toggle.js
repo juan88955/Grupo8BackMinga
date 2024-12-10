@@ -1,5 +1,7 @@
 import Author from '../../models/Author.js'
 
+
+//solo manejado por el supraadmin
 const update_active = async(req,res,next) => {
     try {
         let { id } = req.params
