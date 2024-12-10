@@ -7,7 +7,7 @@ let allMangas = async (req, res, next) => {
         let query = {}
 
         if (title) {
-            query.title = { $regex: '^' + title, $options: 'i' }
+            query.title = { $regex: title, $options: 'i' }
         }
 
         let manga = await Manga.find(query).populate('category_id').exec()
