@@ -10,10 +10,11 @@ import accountExists from "../middlewares/accountExists.js"
 import createHash from "../middlewares/createHash.js"
 import passport from "../middlewares/passport.js"
 import generateToken from "../middlewares/generateToken.js"
+import isRole3 from "../middlewares/isRole3.js"
 
 const routerUsers = Router()
 
-routerUsers.get('/allUser', passport.authenticate('jwt', { session: false }), allUser)
+routerUsers.get('/allUser',passport.authenticate('jwt', { session: false }),isRole3(),allUser)
 routerUsers.get('/id/:id', passport.authenticate('jwt', { session: false }), usersById)
 routerUsers.get('/email/:email', passport.authenticate('jwt', { session: false }), usersByEmail)
 routerUsers.get('/role/:role', passport.authenticate('jwt', { session: false }), usersByRole)

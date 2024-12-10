@@ -1,5 +1,7 @@
 import Company from '../../models/Company.js'
 
+
+//solo manejado por el supraadmin
 const update_active = async(req,res,next) => {
     try {
         let { id } = req.params

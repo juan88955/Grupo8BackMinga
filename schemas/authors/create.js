@@ -3,77 +3,72 @@ import Joi from "joi";
 const schema = Joi.object({
     name: Joi.string()
         .required()
-        .pattern(/^[a-zA-Z\s]+$/)
-        .min(3)
-        .max(16)
+        .pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/)
+        .min(2)
+        .max(30)
         .messages({
-            'string.pattern.base': 'The name can only contain letters and spaces.',
-            'string.min': 'The name must have at least 3 characters.',
-            'string.max': 'The name must have a maximum of 16 characters.',
+            'string.pattern.base': 'The name can contain letters, accents and spaces.',
+            'string.min': 'The name must have at least 2 characters.',
+            'string.max': 'The name must have a maximum of 30 characters.',
             'string.empty': 'The "name" field cannot be empty.',
             'any.required': 'The "name" field is required.'
         }),
     last_name: Joi.string()
-        .required()
-        .pattern(/^[a-zA-Z\s]+$/)
-        .min(3)
-        .max(16)
+        .pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s-]+$/)
+        .min(2)
+        .max(30)
+        .allow('')
         .messages({
-            'string.pattern.base': 'The last name can only contain letters and spaces.',
-            'string.min': 'The last name must have at least 3 characters.',
-            'string.max': 'The last name must have a maximum of 16 characters.',
-            'string.empty': 'The "last_name" field cannot be empty.',
-            'any.required': 'The "last_name" field is required.'
+            'string.pattern.base': 'The last name can contain letters, accents, spaces and hyphens.',
+            'string.min': 'The last name must have at least 2 characters.',
+            'string.max': 'The last name must have a maximum of 30 characters.'
         }),
     city: Joi.string()
         .required()
-        .min(3)
-        .max(20)
+        .pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s.,'-]+$/)
+        .min(2)
+        .max(50)
         .messages({
-            'string.base': 'The "city" field must be a string.',
-            'string.empty': 'The "city" field cannot be empty.',
-            'string.min': 'The city name must have at least 3 characters.',
-            'string.max': 'The city name must have a maximum of 20 characters.',
+            'string.pattern.base': 'The city can contain letters, accents and basic punctuation.',
+            'string.min': 'The city must have at least 2 characters.',
+            'string.max': 'The city must have a maximum of 50 characters.',
             'any.required': 'The "city" field is required.'
         }),
     country: Joi.string()
         .required()
-        .min(3)
-        .max(20)
+        .pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s.,'-]+$/)
+        .min(2)
+        .max(50)
         .messages({
-            'string.base': 'The "country" field must be a string.',
-            'string.empty': 'The "country" field cannot be empty.',
-            'string.min': 'The country name must have at least 3 characters.',
-            'string.max': 'The country name must have a maximum of 20 characters.',
+            'string.pattern.base': 'The country can contain letters, accents and basic punctuation.',
+            'string.min': 'The country must have at least 2 characters.',
+            'string.max': 'The country must have a maximum of 50 characters.',
             'any.required': 'The "country" field is required.'
         }),
     date: Joi.date()
-        .required()
-        .less('now')
+        .max('now')
+        .allow('')
         .messages({
-            'date.base': 'The "date" field must be a valid date.',
-            'date.less': 'The "date" must be in the past.',
-            'any.required': 'The "date" field is required.'
+            'date.base': 'Please provide a valid date.',
+            'date.max': 'The date cannot be in the future.'
         }),
     photo: Joi.string()
         .uri()
-        .required()
+        .allow('')
         .messages({
-            'string.uri': 'The "photo" field must be a valid URL.',
-            'string.empty': 'The "photo" field cannot be empty.',
-            'any.required': 'The "photo" field is required.'
+            'string.uri': 'The photo URL must be valid when provided.'
         }),
     user_id: Joi.string()
         .required()
-        .pattern(/^[a-fA-F0-9]{24}$/)
+        .pattern(/^[0-9a-fA-F]{24}$/)
         .messages({
             'any.required': 'The "user_id" field is required.',
-            'string.pattern.base': 'The "user_id" must be a valid ObjectId.'
+            'string.pattern.base': 'Please provide a valid user ID.'
         }),
     active: Joi.boolean()
-        .optional()
+        .default(true)
         .messages({
-            'boolean.base': 'The "active" field must be a boolean value (true or false).'
+            'boolean.base': 'The active field must be true or false.'
         })
 });
 
