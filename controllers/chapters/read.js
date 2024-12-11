@@ -4,7 +4,8 @@ import Comment from '../../models/Comment.js'
 
 const allChapters = async (req, res, next) => {
     try {
-        let chapters = await Chapter.find()
+        const {id} = req.query
+        let chapters = await Chapter.find({manga_id: id})
         res.status(200).json({
             success: true,
             response: chapters

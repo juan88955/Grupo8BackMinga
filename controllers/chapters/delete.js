@@ -1,8 +1,10 @@
 import Chapter from '../../models/Chapter.js'
 
-const deleteChapter = async (req, res) => {
+const deleteChapter = async (req, res, next ) => {
     try {
-        await Chapter.findByIdAndDelete(req.params.id)
+        const {title} = req.query
+
+        await Chapter.findOneAndDelete({title: title})
         res.status(200).json({
             success: true,
             message: "Chapter deleted successfully"
