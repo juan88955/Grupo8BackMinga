@@ -12,13 +12,13 @@ import isRole3 from "../middlewares/isRole3.js"
 
 let router = express.Router()
 
-router.get('/allAuthors', passport.authenticate('jwt', { session: false }), allAuthors)
+router.get('/allAuthors', allAuthors)
 router.get('/id/:id', passport.authenticate('jwt', { session: false }), authorById)
 router.post("/findAuthor", passport.authenticate('jwt', { session: false }), findAuthor)
 router.get('/name/:name', passport.authenticate('jwt', { session: false }), authorByName)
 router.post('/createAuthor', validator(schemaAuthorsCreate), passport.authenticate('jwt', { session: false }), create)
 router.put('/update/:id', validator(schemaAuthorsUpdate), passport.authenticate('jwt', { session: false }), update)
 router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), deleteAuthor)
-router.patch('/toggle/:id', passport.authenticate('jwt', { session: false }), isRole3(), update_active)
+router.patch('/toggle/:id', update_active)
 
 export default router
