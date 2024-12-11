@@ -11,7 +11,7 @@ import chaptersRouter from "./chapter.js"
 import reactionsRouter from "./reactions.js"
 import managerRouter from './manager.js'
 import cascadeRouter from './cascade.js'
-
+import profileRouter from './profile.js'
 
 const router = express.Router()
 
@@ -27,6 +27,7 @@ router.use('/chapters', chaptersRouter)
 router.use('/reactions', reactionsRouter)
 router.use('/manager', managerRouter)
 router.use('/cascade', cascadeRouter)
+router.use('/profile', profileRouter )
 
 
 export default router
