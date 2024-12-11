@@ -1,5 +1,5 @@
 import express from 'express'
-import { allReactions, reactionById } from '../controllers/reactions/read.js'
+import { allReactions, reactionById, reactionsById } from '../controllers/reactions/read.js'
 import create from '../controllers/reactions/create.js'
 import update from '../controllers/reactions/update.js'
 import deleteReactions from '../controllers/reactions/delete.js'
@@ -13,6 +13,7 @@ let router = express.Router()
 
 router.get('/allReactions', allReactions)
 router.get('/reactionById/:id', passport.authenticate('jwt', { session: false }), reactionById)
+router.post("/reactionsById", passport.authenticate('jwt', { session: false }), reactionsById)
 router.post('/createReaction',validator(schemaReactionsCreate), passport.authenticate('jwt', { session: false }), create)
 router.put('/update/:id',validator(schemaReactionsUpdate), passport.authenticate('jwt', { session: false }), update)
 router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), deleteReactions)
