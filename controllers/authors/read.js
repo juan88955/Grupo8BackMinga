@@ -1,7 +1,7 @@
 import Author from '../../models/Author.js'
 import "../../models/User.js"
 
-
+//solo lo maneja el superadmin
 let allAuthors = async (req, res, next) => {
     try {
         let authors = await Author.find()

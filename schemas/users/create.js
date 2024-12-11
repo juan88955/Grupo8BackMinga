@@ -10,23 +10,25 @@ const schema = Joi.object({
         }),
     password: Joi.string()
         .required()
-        .min(5)
-        .pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/)
+        .min(8)
+        .max(30)
+        .pattern(/^(?=.*[A-Za-zÁáÉéÍíÓóÚúÑñ])(?=.*\d)(?=.*[@$!%*?&])[A-Za-zÁáÉéÍíÓóÚúÑñ\d@$!%*?&]*$/)
         .messages({
-            'string.min': 'Password must be at least 5 characters',
+            'string.min': 'Password must be at least 8 characters',
+            'string.max': 'Password must not exceed 30 characters',
             'string.pattern.base': 'The password must include at least one letter, one number, and one special character.',
             'any.required': 'The "password" field is required.'
         }),
     photo: Joi.string()
-        .required()
-        .allow('')
         .uri()
+        .allow('')
         .messages({
             'string.uri': 'Photo URL is invalid'
         }),
     role: Joi.number()
+        .default(0)
+        .min(0)
         .messages({
-            'any.required': 'The "role" field is required.',
             'number.base': 'Role must be a number',
             'number.min': 'Role cannot be negative'
         })
