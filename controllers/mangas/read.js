@@ -7,7 +7,7 @@ let allMangas = async (req, res, next) => {
         let query = {}
 
         if (title) {
-            query.title = { $regex: title, $options: 'i' }
+            query.title = { $regex: title, $options: 'i' }//Prevalidaciones
         }
 
         let manga = await Manga.find(query).populate('category_id').exec()
@@ -38,7 +38,7 @@ let mangasByTitle = async (req, res, next) => {
     }
 };
 
-const mangasById = async (req, res) => {
+const mangasById = async (req, res, next) => {
     try {
         let manga = await Manga.findById(req.params.id)
         res.status(200).json({

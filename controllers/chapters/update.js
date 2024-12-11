@@ -1,16 +1,20 @@
 import Chapter from '../../models/Chapter.js'
 
-const update = async (req, res) => {
+const update = async (req, res, next ) => {
     try {
-        let updatedChapter = await Chapter.findByIdAndUpdate(
-            req.params.id,
-            req.body,
+        console.log(req.body)
+        const updateData = req.body
+        
+        let updatedChapter = await Chapter.findOneAndUpdate(
+            { title: req.params.title },
+            updateData,
             { new: true }
         )
         res.status(200).json({
             success: true,
             chapter: updatedChapter
         })
+
     } catch (error) {
         next(error)
     }
