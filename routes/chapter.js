@@ -12,11 +12,11 @@ import passport from "../middlewares/passport.js"
 let router = express.Router()
 
 router.get('/allChapters', allChapters)
-router.get('/chapterById/:id', chapterById)
+router.get('/chapterById/:id', passport.authenticate('jwt', {session: false}), chapterById)
 router.get("/:chapterId/comments", getCommentsByChapterId)
 router.post("/:chapterId/comments", createComment)
 router.post('/createChapter', validator(schemaChaptersCreate), passport.authenticate('jwt', { session: false }), create)
-router.put('/update/:id', validator(schemaChaptersUpdate), passport.authenticate('jwt', { session: false }), update)
-router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), deleteChapter)
+router.put('/update/:title', validator(schemaChaptersUpdate), passport.authenticate('jwt', { session: false }), update)
+router.delete('/delete', passport.authenticate('jwt', { session: false }), deleteChapter)
 
 export default router

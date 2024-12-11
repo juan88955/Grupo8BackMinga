@@ -1,7 +1,7 @@
 import Chapter from '../../models/Chapter.js'
 import Comment from '../../models/Comment.js'
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
     try {
         let newChapter = await Chapter.create(req.body)
         res.status(201).json({
